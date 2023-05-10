@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>API карт 2ГИС</title>
+        <style>
+            html, body{
+            background-color: rgb(168, 168, 161);
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            }
+            #map{
+            width: 55%;
+            height: 55%;
+            margin: auto;
+            margin-top: 2%;
+            border-radius: 20px;
+            margin-bottom: 2%;
+            }
+            h1,h2{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                text-align: center;
+                color: #085872;
+            }
+            #style1{
+                width: 100px;
+                height: 30px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                color: #ca390d;
+                border-radius: 15px;
+                border: 2px solid #085872;
+                text-align: center;
+            }
+           
+            #zoom{
+              width: 100px;
+                height: 30px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                color: #ca390d;
+                border-radius: 15px;
+                border: 2px solid #085872;
+                text-align: center;
+            }
+            #style2{
+                position: static;
+                width: 100px;
+                height: 30px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                color: #085872;
+                border-radius: 15px;
+                border: 2px solid #ca390d;
+                text-align: center;
+            }
+            #dragging{
+              position: static;
+                width: 100px;
+                height: 30px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                color: #085872;
+                border-radius: 15px;
+                border: 2px solid #ca390d;
+                text-align: center;
+            }
+            #add{
+                border-spacing: 10px;
+                margin: auto;
+            }
+            table{
+                border-spacing: 300px ;
+                left: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>2GIS MAP</h1>
+        <h2>Корпуса Самарского государственного технического университета</h2>
+       <table id="add"><tr>
+                <th><div id="style1" onclick="removelastcoord();" style="cursor: pointer;" > remove </div></th>
+                <th><div id="style2" onclick="saveway();" style="cursor: pointer;"> save way </div></th>
+                <th><div id="style1" onclick="unisubway();" style="cursor: pointer;"> uni-subway </div></th>
+                <th><div id="style2" onclick="et();" style="cursor: pointer;"> 8-3 </div></th>
+                <th><div id="style1" onclick="os();" style="cursor: pointer;"> 1-6 </div></th>
+        </tr></table>
+                <div id="map"></div>
+                <table id="add"><tr>
+                    <th><div id="style1" onclick="ttraffic();" style="cursor: pointer;" > traffic </div></th>
+                    <th><div id="style2" onclick="sscale();" style="cursor: pointer;"> scale </div></th>
+    
+                    <th><div id="zoom" onclick="zoom();" style="cursor: pointer;"> zoom </div></th>
+                    <th><div id="dragging" onclick="dragging();" style="cursor: pointer;"> dragging </div></th>
+            </tr></table>
+            <div id="popup">
+                <h2>Are you sure you want to leave?</h2>
+                <p>Your changes may not be saved.</p>
+                <button id="stay">Stay on this page</button>
+              </div>
+              
+        <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+        <script src="trash.js"> </script>
+    </body>
+</html>

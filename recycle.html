@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SVG recycle</title>
+</head>
+<style>
+    svg{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        left: 60px;
+        top: 60px;
+        opacity: 0.1;
+        transition: all 0.2s;
+    }
+    #description{
+        width: 400px;
+        height: 470px;
+        padding: 10px;
+        font-size: 20px;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        color: rgb(80, 80, 80);
+    }
+    table {
+        border-spacing: 50px;
+    }
+    g:hover{
+        cursor: pointer;
+        opacity: 0;
+        transition: all 0.2s;
+        }
+</style>
+<body style="background-color: #f3f3f3;">
+<table>
+    <td>
+        <div class="apic">
+            <svg width="480" height="480"y="0" x="0">
+                <g id="paper" onmouseover="document.getElementById('description').innerHTML='<h2>Paper</h2>We recommend using a designated paper recycling bin for the collection of your paper waste. Keep paper that you recycle as clean as possible by collecting it in separate bins from all the other recyclable materials. This is the best way to ensure that the waste paper can be recycled properly'" onmouseout="document.getElementById('description').innerHTML='<h2>How to start recycling?<h2>'">
+                    <path class="part" id="svg_2" d="m13.299993,55.999999c0,0 0,138.999998 0,138.999998c0,0 14,21 14,21c0,0 64.999999,-1 64.999999,-1c0,0 22,-19 22,-19c0,0 0,-138.999998 -0.299991,-139.999997c0.299991,0.999999 -15.700008,-20.000001 -16,-21c0.299992,0.999999 -67.700007,-2.000001 -67.700007,-2.000001c0,0 -17,23 -17,23z" stroke-width="1.5" stroke="#000" fill="#424242"/>
+                    <path class="part"id="svg_3" d="m20.299993,302.999995c0,0 8,122.999998 8,122.999998c0,0 72.999999,2 72.999999,2c0,0 3,-107.999998 3,-107.999998c0,0 -35.999999,-51.999999 -36.299992,-52.999995c0.299992,0.999995 -47.700007,35.999995 -47.700007,35.999995z" stroke-width="1.5" stroke="#000" fill="#424242"/>
+                </g> 
+                <g id="glass" onmouseover="document.getElementById('description').innerHTML='<h2>Glass</h2><ul><li>Check the guidelines at your local recycling center.</li><li>Rinse the containers well.</li><li>Remove all the parts that aren’t glass.</li><li>Sort the glass by colour.</li><li>Make sure there are no foreign objects in the batch.</li><li>Deposit the glass in a recycling bank or bring it to the recycling center</li><ul>'" onmouseout="document.getElementById('description').innerHTML='<h2>How to start recycling?<h2>'">
+                    <path class="part"id="svg_4" d="m135.299991,203.999996c0,0 12,14 12,14c0,0 71.999999,-2 71.999999,-2c0,0 13,-18 13,-18c0,0 1,-146.999998 1,-146.999998c0,0 -21,-16 -21.29999,-16.999999c0.29999,0.999999 -64.700009,0.999999 -65,0c0.299991,0.999999 -19.700009,21.999999 -19.700009,21.999999c0,0 8,147.999998 8,147.999998z" stroke-width="1.5" stroke="#000" fill="#424242"/>
+                    <path class="part"id="svg_5" d="m137.299991,319.999995c0,0 5,107.999998 7,107.999998c2,0 72.999999,0 74.999999,0c2,0 5,-113.999998 5,-113.999998c0,0 -14,-42.999999 -14.29999,-43.999995c0.29999,0.999995 -28.70001,-2.000005 -29,-3c0.29999,0.999995 -31.700009,7.999995 -31.700009,7.999995c0,0 -12,44.999999 -12,44.999999z" stroke-width="1.5" stroke="#000" fill="#424242"/>
+                </g>
+                <g id="organic" onmouseover="document.getElementById('description').innerHTML='<h2>Ogranic</h2><ul><li>Source reduction: Reduce the volume of surplus food generated</li><li>Feed hungry people: Donate extra food to food banks, soup kitchens, and shelters</li><li>Feed animals: Divert food scraps to animal feed</li><li>Composting: Create a nutrient-rich soil amendment</li><li>Landfill/incineration: Last resort to disposal</li></ul>'" onmouseout="document.getElementById('description').innerHTML='<h2>How to start recycling?<h2>'">
+                    <path class="part"id="svg_6" d="m249.299989,52.999999c0,0 -1,143.999998 -1,143.999998c0,0 19,20 19,20c0,0 67.999999,-2 67.700011,-2.999996c0.299988,0.999996 14.299988,-15.000003 14.299988,-15.000003c0,0 0,-146.999998 -0.299988,-147.999997c0.299988,0.999999 -18.700012,-18.000001 -18.700012,-18.000001c0,0 -58.999999,0 -58.999999,0c0,0 -22,20 -22,20z" stroke-width="1.5" stroke="#000" fill="#424242"/>
+                    <path class="part"id="svg_7" d="m255.299989,285.999995c3,0 10,137.999998 10,137.999998c0,0 72.999999,1 72.999999,-1c0,-2 4,-107.999998 3.700012,-108.999993c0.299988,0.999995 -24.700012,-32.000005 -25,-33c0.299988,0.999995 -64.700011,4.999995 -61.700011,4.999995z" stroke-width="1.5" stroke="#000" fill="#424242"/>
+                    
+                </g>
+                <g id="plastic" onmouseover="document.getElementById('description').innerHTML='<h2>Plastic</h2>Plastic that is collected from your homes, businesses, and local recycling centres, is sent to a Material Recovery Facilities (MRF), which separates plastic and non-plastic, and/or a Plastic Recovery Facilities (PRF), which sorts plastic by type. These facilites use sorting equipment such as an optical sorter which can distinguish between between different types of plastics.  The plastic then goes to a reprocesses where it is washed,  shredded and sorted further. The plastic is then melted and extruded a into new recycled plastic pellets. These pellets are sold on for use in new products. This page will now explain each stage in more detail.'" onmouseout="document.getElementById('description').innerHTML='<h2>How to start recycling?<h2>'">
+                    <path class="part"id="svg_8" d="m368.299988,60.999999c0,0 -1,136.999998 -1,136.999998c0,0 20,20 20,20c0,0 64.999999,-2 64.999999,-2c0,0 17,-21 17,-21c0,0 1,-134.999998 1,-134.999998c0,0 -21,-26 -21.299986,-26.999999c0.299986,0.999999 -70.700013,3.999999 -70.700013,3.999999c0,0 -10,24 -10,24z" stroke-width="0" stroke="#000" fill="#424242"/>
+                    <path class="part"id="svg_9" d="m374.299988,318.999995c0,0 11,105.999998 11,105.999998c0,0 73.999999,3 73.999999,3c0,0 2,-111.999998 2,-111.999998c0,0 -26,-37.999999 -26,-37.999999c0,0 -51.999999,3 -51.999999,3c0,0 -9,37.999999 -9,37.999999z" stroke-width="1.5" stroke="#000" fill="#424242"/>  
+                </g>
+            </svg>
+               <image src="categories.jpg" id="svg_1" height="480" width="480" y="0" x="0"/>
+            </div>
+    </td>
+    <td>
+        <div id="description"><h2>How to start recycling?</h2></div> 
+    </td>
+</table>
+    
+</body>
+</html>

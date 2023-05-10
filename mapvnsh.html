@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>API карт 2ГИС</title>
+        <style>
+            html, body{
+            background-color: rgb(168, 168, 161);
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            }
+            #map{
+            width: 55%;
+            height: 60%;
+            margin: auto;
+            margin-top: 3%;
+            border-radius: 20px;
+            }
+            h1,h2{
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                text-align: center;
+                color: #085872;
+            }
+            #removelastcoord{
+                width: 100px;
+                height: 30px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                color: #ca390d;
+                border-radius: 15px;
+                border: 2px solid #085872;
+                text-align: center;
+            }
+            #saveway{
+                position: static;
+                width: 100px;
+                height: 30px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                color: #085872;
+                border-radius: 15px;
+                border: 2px solid #ca390d;
+                text-align: center;
+            }
+            table{
+                border-spacing:10px;
+                 margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>2GIS MAP</h1>
+        <h2>Корпуса Самарского государственного технического университета</h2>
+        <table ><tr>
+            <th><div id="removelastcoord" onclick="removelastcoord();" style="cursor: pointer;" > remove </div></th>
+            <th><div id="saveway" onclick="saveway();" style="cursor: pointer;"> save way </div></th>
+          </tr></table>
+        
+        <div id="map"></div>
+        <script src="https://maps.api.2gis.ru/2.0/loader.js?pkg=full"></script>
+        <script type="text/javascript">
+            var map;
+            var i;
+            var myIcon;
+            var polyline;
+            let coords = [];
+            let ways =[];
+            let marker = [];
+            let colors = ['black','blue','green','red'];
+            function getRandomInt(min, max) {
+               return Math.floor(Math.random() * (max - min)) + min;
+            };
+            var removelastcoord = ()=> {
+                    DG.then(function(){
+                        coords.pop();
+                        console.log(coords);
+                        polyline.setLatLngs(coords).redraw();
+                });
+            }
+
+            var saveway =()=>{
+                DG.then(function(){
+                        ways[ways.length +1] = prompt("Name of the route?","type here...");
+                        ways[ways.length +2] = coords;
+                        coords = [];
+                        console.log(ways);
+                        polyline.setLatLngs(coords).redraw();
+                });
+            }
+            DG.then(function () {
+                map = DG.map('map', {
+                    center: [53.208973, 50.124476],
+                    zoom: 15,
+                    dragging: true, 
+                    touchZoom: true,
+                    scrollWheelZoom: true,
+                    doubleClickZoom: true,
+                    geoclicker: false,
+                    zoomControl: true,
+                    fullscreenControl: true
+                });
+                DG.control.location({position: 'bottomright'}).addTo(map);
+                DG.control.scale().addTo(map); //линейка
+                DG.control.ruler({position: 'bottomleft'}).addTo(map);
+                DG.control.traffic().addTo(map); //пробки
+         
+                clickedElement = document.getElementById('clicked_element');
+                map.on('click', function(e) {
+                    coords.push([e.latlng.lat, e.latlng.lng]);
+                    
+                // создаем ломаную из массива географических точек
+                if (!polyline) {
+                    polyline = DG.polyline(coords, {
+                        color: colors[getRandomInt(0,colors.length-1)]
+                        }).addTo(map);
+                } 
+                else{
+                    polyline.setLatLngs(coords).redraw();
+                }
+                 clickedElement.innerHTML += '[' + e.latlng.lat + ', ' + e.latlng.lng + '],';
+                });
+
+                
+
+                var korpusi = [
+                    [53.208973, 50.124476, 'https://cdn-icons-png.flaticon.com/512/4059/4059281.png', "Главный корпус", "Молодогвардейская, 244"],
+                    [53.209755, 50.124535, 'https://cdn-icons-png.flaticon.com/512/8068/8068017.png', "Первый корпус", "Первомайская, 18"],
+                    [53.199195, 50.105116, 'https://cdn-icons-png.flaticon.com/512/8068/8068129.png', "Третий корпус", "Молодогвардейская 133"],
+                    [53.196498, 50.105943, 'https://cdn-icons-png.flaticon.com/512/8068/8068292.png', "Шестой корпус", "Галактионовская, 141"],
+                    [53.209426, 50.125884, 'https://cdn-icons-png.flaticon.com/512/8068/8068393.png', "Восьмой корпус", "Молодогвардейская, 244"],
+                    [53.207796, 50.128625, 'https://cdn-icons-png.flaticon.com/512/8067/8067930.png',"Девятый корпус","Ново-Садовая, 10"],
+                    [53.208603, 50.128188, 'https://cdn-icons-png.flaticon.com/512/8067/8067958.png', "Десятый корпус","Циолковского, 1"],
+                    [53.200487, 50.103777, 'https://cdn-icons-png.flaticon.com/512/8067/8067973.png', "Двеннадцатый корпус","Молодогвардейская, 194"],
+                    [53.208356, 50.130018, 'https://cdn-icons-png.flaticon.com/512/8067/8067987.png', "Четырнадцатый корпус","Ново-Садовая, 14"]
+                ]
+
+                for (let i = 0; i < korpusi.length; i++) {
+                    myIcon = DG.icon({
+                        iconUrl: korpusi[i][2],
+                        iconSize: [40,40]
+                    });
+
+                    marker[i] = DG.marker([korpusi[i][0],korpusi[i][1]],{
+                        icon: myIcon
+                    }).addTo(map);
+                    marker[i].bindPopup(korpusi[i][4]); //привязали попап
+                    marker[i].bindLabel(korpusi[i][3]);
+                 }
+
+                group = DG.featureGroup(marker);
+                group.addTo(map);
+                group.on('click', function(e) {
+                    map.setView([e.latlng.lat, e.latlng.lng]);
+                }); 
+            });
+        </script>
+    </body>
+</html>
